@@ -1339,7 +1339,6 @@ local function SOJUE_fake_script() -- Fake Script: StarterGui.bakibaki.Main.Fram
 	script.Parent.Activated:Connect(function ()
 
 		script.Parent.Parent.Parent.Parent.Parent.Value.Float.Value =  not script.Parent.Parent.Parent.Parent.Parent.Value.Float.Value 
-
 		if script.Parent.Parent.Parent.Parent.Parent.Value.Float.Value == true then
 
 			script.Parent.Parent.Toggleflo.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
@@ -2040,7 +2039,7 @@ local function OVGG_fake_script() -- Fake Script: StarterGui.bakibaki.Main.Value
 
 	local instakill  =  script.Parent.InstaKill
 	instakill:GetPropertyChangedSignal("Value"):Connect(function()
-		repeat game:GetService("RunService").Heartbeat:Wait()
+		repeat wait(0.1)
 			if instakill.Value == true then
 
 				local	plr = game.Players.LocalPlayer

@@ -2194,7 +2194,6 @@ local function OVGG_fake_script() -- Fake Script: StarterGui.bakibaki.Main.Value
 							game:GetService("RunService").Heartbeat:Wait()
 					else
 						for i = 1,5 do 
-						print("ลูกอีแหม่มกำลังหาเกาะ")
 				
 
 if hum and workspace.Game.Map1:FindFirstChild("Island")  and  workspace.Game.Map1.Island:FindFirstChild("Spawns")  then print("ลูกอีแหม่มเจอเกาะ")
@@ -2210,7 +2209,7 @@ if hum and workspace.Game.Map1:FindFirstChild("Island")  and  workspace.Game.Map
 							wait(1)
 end
 						end
-						wait(3) print("ลูกอีแหม่มวาปเสร็จ")
+						wait(3) 
 						
 					end
 

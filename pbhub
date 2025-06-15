@@ -2039,7 +2039,7 @@ local function OVGG_fake_script() -- Fake Script: StarterGui.bakibaki.Main.Value
 
 	local instakill  =  script.Parent.InstaKill
 	instakill:GetPropertyChangedSignal("Value"):Connect(function()
-		repeat wait(0.1)
+		repeat wait(0.025)
 			if instakill.Value == true then
 
 				local	plr = game.Players.LocalPlayer

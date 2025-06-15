@@ -2193,15 +2193,16 @@ local function OVGG_fake_script() -- Fake Script: StarterGui.bakibaki.Main.Value
 					if game.Players.LocalPlayer.Character == nil and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") and workspace:FindFirstChild("Spire") == nil or (workspace.Game.Map1:FindFirstChild("Spire")   and workspace:WaitForChild("SummerBox").BillboardGui.Enabled == true)  then
 						continue	
 					else
-						for i = 1,5 do
+						for i = 1,5 do if hum ~= nil then
 							if i == 5 then
+
 								game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame= CFrame.new(workspace.Game.Map1.Island.Boat.Position) *   CFrame.new(0,2,0)
 								wait(.05)
 								fireclickdetector(workspace.Game.Map1.Island.Boat.ClickDetector)
 							else
 								game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(workspace.Game.Map1:WaitForChild("Island").Spawns["EnemySpawn"..i].Position) *   CFrame.new(0,25,0)
 
-							end
+							end end
 							wait(1)
 						end
 						wait(3)

@@ -2190,10 +2190,20 @@ local function OVGG_fake_script() -- Fake Script: StarterGui.bakibaki.Main.Value
 					wait(1)
 
 				elseif	status == 3 then  -- br fighting
-					if game.Players.LocalPlayer.Character == nil and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") and workspace:FindFirstChild("Island") == nil or (workspace.Game.Map1:FindFirstChild("Island")   and workspace:WaitForChild("SummerBox").BillboardGui.Enabled == true)  then
+					if game.Players.LocalPlayer.Character == nil  or ( workspace:FindFirstChild("Island") == nil or (workspace.Game.Map1:FindFirstChild("Island")   and workspace:WaitForChild("SummerBox").BillboardGui.Enabled == true) ) then
 						continue	
 					else
-						for i = 1,5 do if game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+						for i = 1,5 do 
+					repeat
+						game:GetService("RunService").Heartbeat:Wait() 
+						plr = game.Players.LocalPlayer
+						char = plr.Character or plr.CharacterAdded:Wait()
+						hum = char:FindFirstChild("Humanoid")
+						if not char or not char:IsDescendantOf(game.Workspace) then
+							char = plr.Character or plr.CharacterAdded:Wait()
+						end
+						local	hum = char:FindFirstChild("Humanoid")
+					until hum ~= nil
 							if i == 5 then
 
 								game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame= CFrame.new(workspace.Game.Map1.Island.Boat.Position) *   CFrame.new(0,2,0)
@@ -2202,7 +2212,7 @@ local function OVGG_fake_script() -- Fake Script: StarterGui.bakibaki.Main.Value
 							else
 								game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(workspace.Game.Map1:WaitForChild("Island").Spawns["EnemySpawn"..i].Position) *   CFrame.new(0,25,0)
 
-							end end
+							end
 							wait(1)
 						end
 						wait(3)

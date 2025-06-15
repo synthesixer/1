@@ -2194,6 +2194,7 @@ local function OVGG_fake_script() -- Fake Script: StarterGui.bakibaki.Main.Value
 						continue	
 					else
 						for i = 1,5 do 
+						
 					repeat
 						game:GetService("RunService").Heartbeat:Wait() 
 						plr = game.Players.LocalPlayer
@@ -2204,6 +2205,8 @@ local function OVGG_fake_script() -- Fake Script: StarterGui.bakibaki.Main.Value
 						end
 						local	hum = char:FindFirstChild("Humanoid")
 					until hum ~= nil
+
+if hum and workspace.Game.Map1:FindFirstChild("Island") then
 							if i == 5 then
 
 								game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame= CFrame.new(workspace.Game.Map1.Island.Boat.Position) *   CFrame.new(0,2,0)
@@ -2214,6 +2217,7 @@ local function OVGG_fake_script() -- Fake Script: StarterGui.bakibaki.Main.Value
 
 							end
 							wait(1)
+end
 						end
 						wait(3)
 						

@@ -2202,9 +2202,9 @@ local function OVGG_fake_script() -- Fake Script: StarterGui.bakibaki.Main.Value
 								game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(workspace.Game.Map1:WaitForChild("Island").Spawns["EnemySpawn"..i].Position) *   CFrame.new(0,25,0)
 
 							end
-							wait(.5)
+							wait(1)
 						end
-						
+						wait(3)
 						
 					end
 

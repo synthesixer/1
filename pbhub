@@ -1,7 +1,7 @@
 -- Generated using RoadToGlory's Converter v1.1 (RoadToGlory#9879)
 
 -- Instances:
-print("version 1.00")
+print("version 1.01")
 local Converted = {
 	["_bakibaki"] = Instance.new("ScreenGui");
 	["_Main"] = Instance.new("Frame");
@@ -2190,36 +2190,27 @@ local function OVGG_fake_script() -- Fake Script: StarterGui.bakibaki.Main.Value
 					wait(1)
 
 				elseif	status == 3 then  -- br fighting
-					if game.Players.LocalPlayer.Character == nil  or ( workspace:FindFirstChild("Island") == nil or (workspace.Game.Map1:FindFirstChild("Island")   and workspace:WaitForChild("SummerBox").BillboardGui.Enabled == true) ) then
-						continue	
+					if game.Players.LocalPlayer.Character == nil  or (workspace.Game.Map1:FindFirstChild("Island")   and workspace:WaitForChild("SummerBox").BillboardGui.Enabled == true)  then
+							game:GetService("RunService").Heartbeat:Wait()
 					else
 						for i = 1,5 do 
-						
-					repeat
-						game:GetService("RunService").Heartbeat:Wait() 
-						plr = game.Players.LocalPlayer
-						char = plr.Character or plr.CharacterAdded:Wait()
-						hum = char:FindFirstChild("Humanoid")
-						if not char or not char:IsDescendantOf(game.Workspace) then
-							char = plr.Character or plr.CharacterAdded:Wait()
-						end
-						local	hum = char:FindFirstChild("Humanoid")
-					until hum ~= nil
+						print("ลูกอีแหม่มกำลังหาเกาะ")
+				
 
-if hum and workspace.Game.Map1:FindFirstChild("Island")   then
+if hum and workspace.Game.Map1:FindFirstChild("Island")  and  workspace.Game.Map1.Island:FindFirstChild("Spawns")  then print("ลูกอีแหม่มเจอเกาะ")
 							if i == 5 then
 
 								game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame= CFrame.new(workspace.Game.Map1.Island.Boat.Position) *   CFrame.new(0,2,0)
 								wait(.05)
 								fireclickdetector(workspace.Game.Map1.Island.Boat.ClickDetector)
 							else
-								game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(workspace.Game.Map1.Island:WaitForChild("Spawns")["EnemySpawn"..i].Position) *   CFrame.new(0,25,0)
+								game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(workspace.Game.Map1.Island.Spawns["EnemySpawn"..i].Position) *   CFrame.new(0,25,0)
 
 							end
 							wait(1)
 end
 						end
-						wait(3)
+						wait(3) print("ลูกอีแหม่มวาปเสร็จ")
 						
 					end
 

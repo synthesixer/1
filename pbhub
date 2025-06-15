@@ -1819,107 +1819,45 @@ local function OVGG_fake_script() -- Fake Script: StarterGui.bakibaki.Main.Value
 	end)
 
 	float:GetPropertyChangedSignal("Value"):Connect(function()
-		if float.Value == true then
+		if not float.Value then return end
 
+	repeat
+		game:GetService("RunService").Stepped:Wait()
 
+		local plr = game.Players.LocalPlayer
+		local char = plr.Character or plr.CharacterAdded:Wait()
+		local hum = char:FindFirstChild("Humanoid")
+		repeat
+			game:GetService("RunService").Heartbeat:Wait()
+			char = plr.Character or plr.CharacterAdded:Wait()
+			hum = char:FindFirstChild("Humanoid")
+		until hum
 
-
-
-
-			repeat game:GetService("RunService").Stepped:Wait()
-
-				local	plr = game.Players.LocalPlayer
-				local 	char = plr.Character or plr.CharacterAdded:Wait()
-				local	hum = char:FindFirstChild("Humanoid")
-
-
-				repeat
-					game:GetService("RunService").Heartbeat:Wait() 
-					plr = game.Players.LocalPlayer
-					char = plr.Character or plr.CharacterAdded:Wait()
-					hum = char:FindFirstChild("Humanoid")
-					if not char or not char:IsDescendantOf(game.Workspace) then
-						char = plr.Character or plr.CharacterAdded:Wait()
-					end
-					local	hum = char:FindFirstChild("Humanoid")
-				until hum ~= nil
-
-
-				if float.Autotrack.Value then
-
-					local Closest = {}
-					Closest.Distance = float.radius.Value
-					for _, Part in ipairs(game.Workspace.Game.Players:GetChildren()) do
-						if  Part and Part.PrimaryPart and Part ~= game.Players.LocalPlayer.Character  then
-							local Distance = (Part.PrimaryPart.Position - char.HumanoidRootPart.Position).Magnitude
-							local checkplayer = false
-							if float.Detectplayer.Value then
-
-
-								checkplayer = true
-
-							else
-								if getPlayerFromCharacter(Part) then
-									checkplayer = false
-								else
-									checkplayer =true
-								end
-
-
-
-							end
-							if Distance < Closest.Distance and checkplayer  then 
-
-
-								float.trackname.Value = Part.Name
-
-								Closest.Distance = Distance
-
-							end end
-					end
-
-
-
-
-
+		local closest, minDist = nil, float.radius.Value
+		for _, t in pairs(game.Workspace.Game.Players:GetChildren()) do
+			if t ~= char and t.PrimaryPart then
+				local d = (t.PrimaryPart.Position - char.HumanoidRootPart.Position).Magnitude
+				local valid = float.Autotrack.Value or t.Name == float.trackname.Value
+				if d <= minDist and valid then
+					closest, minDist = t, d
 				end
-
-
-
-				for i,v in pairs(game.Workspace.Game.Players:GetChildren()) do 
-					if  char and char:FindFirstChild("Humanoid")  ~= nil and char:FindFirstChild("HumanoidRootPart")  ~= nil and float.Value     then
-						local pass = true
-
-						if pass then
-							local mp 
-							if v.Name == float.trackname.Value then
-								if v:FindFirstChild("HumanoidRootPart ") ~= nil then
-									mp = v.HumanoidRootPart
-								elseif v:FindFirstChild("Torso") ~= nil then
-									mp = v.Torso
-								elseif v:FindFirstChild("Head") ~= nil then
-									mp = v.Head
-								elseif v.PrimaryPart then
-									mp = v.PrimaryPart
-								else
-									mp = v:GetModelCFrame()
-								end
-								if mp and float.Value and v.Name == float.trackname.Value and char and v:FindFirstChildWhichIsA("Humanoid") and v:FindFirstChildWhichIsA("Humanoid").Health > 0  and (mp.Position - char.HumanoidRootPart.Position).Magnitude <= float.radius.Value   then
-
-
-									char:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(mp.Position) * CFrame.new(0,float.yr.Value,float.xr.Value)
-
-
-
-								end 
-
-							end 
-						end
-					end
-				end
-			until float.Value == false
-
+			end
 		end
+
+		if float.Autotrack.Value and closest then
+			float.trackname.Value = closest.Name
+		end
+
+		for _, v in pairs(game.Workspace.Game.Players:GetChildren()) do
+			if v.Name == float.trackname.Value then
+				local root = v:FindFirstChild("HumanoidRootPart") or v:FindFirstChild("Torso") or v:FindFirstChild("Head") or v.PrimaryPart
+				local h = v:FindFirstChildWhichIsA("Humanoid")
+				if root and h and h.Health > 0 and (root.Position - char.HumanoidRootPart.Position).Magnitude <= float.radius.Value then
+					char.HumanoidRootPart.CFrame = CFrame.new(root.Position) * CFrame.new(0, float.yr.Value, float.xr.Value)
+				end
+			end
+		end
+	until not float.Value
 	end)
 
 	local abr = script.Parent.AutoBR

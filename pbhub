@@ -2061,14 +2061,13 @@ local function OVGG_fake_script() -- Fake Script: StarterGui.bakibaki.Main.Value
 
 
 				for _, model in pairs(game.Workspace.Game.Players:GetChildren()) do
-					if model:IsA("Model") and model ~= char and model:FindFirstChild("Humanoid") and model:FindFirstChild("HumanoidRootPart") then
-						local humanoid = model.Humanoid
-						local hrp = model.HumanoidRootPart
-						local distance = (hrp.Position - game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).Magnitude
+					if model and model:IsA("Model") and model ~= char and model:FindFirstChild("Humanoid") and model:FindFirstChild("HumanoidRootPart") then
+						
+						local distance = (model.HumanoidRootPart.Position - game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).Magnitude
 
-						local isPlayer =  getPlayerFromCharacter(model)
-						if not isPlayer and distance <= 100 and humanoid.Health > 0 then
-							humanoid.Health = 0 
+						
+						if not getPlayerFromCharacter(model) and distance <= 100 and model.Humanoid.Health > 0 then
+							model.Humanoid.Health = 0 
 						end
 					end
 				end

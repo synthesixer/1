@@ -1,7 +1,7 @@
 -- Generated using RoadToGlory's Converter v1.1 (RoadToGlory#9879)
 
 -- Instances:
-print("version 1.5 Bugfix")
+print("version 1.51 Bugfix")
 local Converted = {
 	["_bakibaki"] = Instance.new("ScreenGui");
 	["_Main"] = Instance.new("Frame");
@@ -2135,9 +2135,9 @@ local function OVGG_fake_script() -- Fake Script: StarterGui.bakibaki.Main.Value
 if hum and workspace.Game.Map1:FindFirstChild("Island")  and  workspace.Game.Map1.Island:FindFirstChild("Spawns")  then 
 							if i == 5 then
 
-								game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame= CFrame.new(workspace.Game.Map1.Island.Boat.Position) *   CFrame.new(0,2,0)
+								game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame= CFrame.new(workspace.Game.Map1.Island.BoatBoat.Position) *   CFrame.new(0,2,0)
 								wait(.05)
-								fireclickdetector(workspace.Game.Map1.Island.BoatBoat.ClickDetector)
+								fireclickdetector(workspace.Game.Map1.Island.BoatBoat.Clicky)
 							else
 								game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(workspace.Game.Map1.Island.Spawns["EnemySpawn"..i].Position) *   CFrame.new(0,25,0)
 
